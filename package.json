@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build-server",
-    "start": "node server.js",
+    "start": "node src/server.js",
     "build-server": "echo 'No build required'",
     "postinstall": "prisma generate"
   },

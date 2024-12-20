@@ -1,4 +1,4 @@
-const app = require('./src/app');  // Import the app created in app.js
+const app = require('./app');  // Import the app created in app.js
 
 const PORT = process.env.PORT || 3000;
 
