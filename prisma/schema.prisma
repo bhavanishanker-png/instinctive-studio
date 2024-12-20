@@ -1,0 +1,42 @@
+model CohortCourse {
+  cohortId Int
+  courseId Int
+  cohort   Cohort @relation(fields: [cohortId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
+
+  @@id([cohortId, courseId]) // Composite primary key
+}
+
+model Cohort {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  courses   CohortCourse[]
+  students  Student[]
+}
+
+model Course {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  cohorts   CohortCourse[]
+}
+
+model Student {
+  id          Int      @id @default(autoincrement())
+  StudentName String
+  CohortId    Int
+  cohort      Cohort   @relation(fields: [CohortId], references: [id]) // Relation field
+  DateJoined  DateTime
+  LastLogin   DateTime?
+  Status      String
+  Image       String?
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
