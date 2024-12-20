@@ -1,0 +1,28 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "src/server.js"
+      }
+    ],
+    "env": {
+      "DATABASE_URL": "@database_url"
+    },
+    "functions": {
+      "api/server.js": {
+        "includeFiles": [
+          "prisma/schema.prisma",
+          "node_modules/.prisma/**",
+          "prisma/**"
+        ]
+      }
+    }
+  }
+  
