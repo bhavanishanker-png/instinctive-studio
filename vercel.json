@@ -5,11 +5,6 @@
         "src": "src/server.js",
         "use": "@vercel/node"
       }
-    ],
-    "functions": {
-      "api/**/*.js": {
-        "runtime": "nodejs16.x"
-      }
-    }
+    ]
   }
   
