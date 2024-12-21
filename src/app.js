@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const studentRoutes = require('./routes/studentRoutes');
+const app = express();
+app.use(express.json());
 const cors = require('cors');
 app.use(cors({
     origin: '*', // Allow all origins
@@ -10,8 +12,7 @@ app.use(cors({
 
 dotenv.config();
 
-const app = express();
-app.use(express.json());
+
 
 // Set up the routes
 app.use('/api', studentRoutes);
