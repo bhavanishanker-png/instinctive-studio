@@ -30,9 +30,6 @@ exports.addStudent = async (data) => {
     },
   });
 
-  if (validCourses.length !== Courses.length) {
-    throw new Error('One or more courses do not exist or do not belong to the specified cohort.');
-  }
 
   // Create the student
   const student = await prisma.student.create({
@@ -89,7 +86,7 @@ exports.getStudents = async () => {
       },
     },
   });
-
+  console.log(students)
   // Format the response to include only the relevant data
   return students.map(student => ({
     StudentName: student.StudentName,
